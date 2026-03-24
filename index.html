@@ -1,313 +1,1406 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ian Ramsay — Web Design & Development</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta
+    name="description"
+    content="Ian Ramsay designs and builds websites, membership platforms and custom web functionality for businesses, founders and service brands."
+  />
+  <title>Ian Ramsay — Web Design & Development</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Mono&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=DM+Mono:wght@300;400&family=Jost:wght@300;400;500&display=swap"
+    rel="stylesheet"
+  />
 
-<style>
-body {
-  margin:0;
-  font-family:'Jost', sans-serif;
-  background:#ede4d8;
-  color:#2a2420;
-}
+  <style>
+    :root {
+      --ink: #2a2420;
+      --paper: #ede4d8;
+      --card: #f2ebe0;
+      --dim: #e4d9ca;
+      --accent: #b85528;
+      --green: #6a9178;
+      --mid: #746b63;
+      --dark: #2e2820;
+      --border: rgba(42, 36, 32, 0.1);
+      --mono: 'DM Mono', monospace;
+      --serif: 'Playfair Display', Georgia, serif;
+      --sans: 'Jost', sans-serif;
+      --wrap: 1200px;
+    }
 
-.container {
-  max-width:1100px;
-  margin:auto;
-  padding:80px 28px;
-}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--paper);
+      color: var(--ink);
+      overflow-x: hidden;
+    }
 
-h1,h2,h3 {
-  font-family:'Playfair Display', serif;
-  font-weight:400;
-}
+    a { color: inherit; }
 
-h1 {
-  font-size:64px;
-  line-height:1.05;
-}
+    .wrap {
+      max-width: var(--wrap);
+      margin: 0 auto;
+    }
 
-h2 {
-  font-size:42px;
-}
+    .section {
+      padding: 96px 56px;
+    }
 
-p {
-  font-size:19px;
-  line-height:1.8;
-  color:#6f665f;
-}
+    .section-label {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin: 0 0 46px;
+    }
 
-/* HERO */
-.hero {
-  padding:140px 28px 100px;
-}
+    .section-label::before {
+      content: "";
+      width: 24px;
+      height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
 
-.hero p {
-  max-width:600px;
-}
+    /* HEADER */
+    #ir-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 400;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 20px 56px;
+      background: rgba(237, 228, 216, 0.9);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(42, 36, 32, 0.08);
+      transition: padding 0.25s ease;
+    }
 
-.cta {
-  display:inline-block;
-  margin-top:30px;
-  padding:14px 26px;
-  background:#b85528;
-  color:#fff;
-  text-decoration:none;
-  font-family:'DM Mono', monospace;
-  font-size:12px;
-  letter-spacing:0.15em;
-}
+    #ir-header.scrolled {
+      padding: 14px 56px;
+    }
 
-.cta:hover {
-  background:#2a2420;
-}
+    .hdr-name {
+      font-family: var(--serif);
+      font-size: 20px;
+      text-decoration: none;
+      color: var(--ink);
+      white-space: nowrap;
+    }
 
-/* SECTION DARK */
-.dark {
-  background:#2e2820;
-  color:#fff;
-}
+    .hdr-nav {
+      display: flex;
+      align-items: center;
+      gap: 30px;
+    }
 
-.dark p {
-  color:rgba(255,255,255,0.7);
-}
+    .hdr-nav a {
+      text-decoration: none;
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mid);
+      transition: color 0.2s ease;
+    }
 
-/* GRID */
-.grid {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:40px;
-}
+    .hdr-nav a:hover {
+      color: var(--accent);
+    }
 
-.card {
-  background:#f2ebe0;
-  padding:30px;
-  border:1px solid rgba(0,0,0,0.08);
-}
+    .hdr-cta {
+      background: var(--accent);
+      color: var(--paper) !important;
+      padding: 10px 22px;
+      border-radius: 2px;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
 
-.card h3 {
-  margin-top:0;
-}
+    .hdr-cta:hover {
+      background: var(--dark);
+      transform: translateY(-1px);
+    }
 
-/* SMALL TEXT */
-.small {
-  font-size:14px;
-  letter-spacing:0.12em;
-  text-transform:uppercase;
-  font-family:'DM Mono', monospace;
-  color:#b85528;
-}
+    /* HERO */
+    .hero {
+      min-height: 92vh;
+      padding: 140px 56px 88px;
+      display: flex;
+      align-items: flex-end;
+      position: relative;
+      overflow: hidden;
+      background: var(--paper);
+    }
 
-/* LIST */
-ul {
-  padding-left:18px;
-}
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(42, 36, 32, 0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(42, 36, 32, 0.05) 1px, transparent 1px);
+      background-size: 72px 72px;
+      opacity: 0.65;
+      pointer-events: none;
+    }
 
-li {
-  margin-bottom:8px;
-}
+    .hero::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 82% 18%, rgba(184, 85, 40, 0.09) 0%, transparent 58%);
+      pointer-events: none;
+    }
 
-/* FOOTER */
-.footer {
-  padding:40px;
-  background:#2e2820;
-  color:#fff;
-  font-size:14px;
-}
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+      max-width: 1100px;
+    }
 
-@media(max-width:800px){
-  h1 {font-size:42px;}
-  .grid {grid-template-columns:1fr;}
-}
-</style>
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin: 0 0 26px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .hero-eyebrow::before {
+      content: "";
+      width: 28px;
+      height: 1px;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(46px, 7vw, 98px);
+      line-height: 1.02;
+      letter-spacing: -0.02em;
+      font-weight: 400;
+      max-width: 10.8ch;
+      margin: 0 0 30px;
+      color: var(--ink);
+    }
+
+    .hero h1 em {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .hero-sub {
+      font-size: 21px;
+      line-height: 1.85;
+      color: var(--mid);
+      max-width: 54ch;
+      margin: 0 0 38px;
+    }
+
+    .hero-sub strong {
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 22px;
+    }
+
+    .btn {
+      display: inline-block;
+      text-decoration: none;
+      transition: transform 0.2s ease, background 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+      border-radius: 2px;
+    }
+
+    .btn-primary {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      background: var(--accent);
+      color: var(--paper);
+      padding: 15px 24px;
+    }
+
+    .btn-primary:hover {
+      background: var(--dark);
+      transform: translateY(-1px);
+    }
+
+    .btn-secondary {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      border: 1px solid rgba(42, 36, 32, 0.18);
+      padding: 15px 24px;
+    }
+
+    .btn-secondary:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+      transform: translateY(-1px);
+    }
+
+    .hero-note {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: rgba(42, 36, 32, 0.55);
+    }
+
+    /* INTRO */
+    .intro {
+      background: var(--dark);
+      color: var(--paper);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .intro::before {
+      content: "";
+      position: absolute;
+      top: -130px;
+      right: -90px;
+      width: 520px;
+      height: 520px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(106, 145, 120, 0.08) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .intro .section-label {
+      color: var(--green);
+    }
+
+    .intro .section-label::before {
+      background: var(--green);
+    }
+
+    .intro-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.1fr;
+      gap: 84px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .intro h2 {
+      font-family: var(--serif);
+      font-size: clamp(30px, 4vw, 52px);
+      line-height: 1.15;
+      font-weight: 400;
+      color: var(--paper);
+    }
+
+    .intro h2 em {
+      color: var(--green);
+      font-style: italic;
+    }
+
+    .intro-copy p {
+      font-size: 19px;
+      line-height: 1.95;
+      color: rgba(237, 228, 216, 0.82);
+      margin: 0 0 20px;
+    }
+
+    .intro-copy p:last-child { margin-bottom: 0; }
+
+    .intro-copy strong {
+      color: #f3ece1;
+      font-weight: 500;
+    }
+
+    /* PORTFOLIO */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: 0 1px 3px rgba(42, 36, 32, 0.05);
+      overflow: hidden;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(42, 36, 32, 0.08);
+    }
+
+    .project-thumb {
+      aspect-ratio: 16 / 10;
+      background:
+        linear-gradient(rgba(42,36,32,0.18), rgba(42,36,32,0.18)),
+        linear-gradient(135deg, #ddd2c4, #cbb8a4);
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 22px;
+      position: relative;
+    }
+
+    .project-thumb span {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.9);
+      background: rgba(42,36,32,0.35);
+      padding: 7px 10px;
+      border-radius: 2px;
+    }
+
+    .project-body {
+      padding: 28px 26px 26px;
+    }
+
+    .project-top {
+      display: flex;
+      justify-content: space-between;
+      gap: 14px;
+      align-items: baseline;
+      margin-bottom: 10px;
+    }
+
+    .project-kicker {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--accent);
+    }
+
+    .project-link {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .project-link:hover {
+      color: var(--accent);
+    }
+
+    .project-title {
+      font-family: var(--serif);
+      font-size: 28px;
+      line-height: 1.15;
+      font-weight: 400;
+      margin: 0 0 12px;
+      color: var(--ink);
+    }
+
+    .project-summary {
+      font-size: 17px;
+      line-height: 1.8;
+      color: var(--mid);
+      margin: 0 0 20px;
+    }
+
+    .project-meta {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 18px;
+      border-top: 1px solid rgba(42,36,32,0.08);
+      padding-top: 18px;
+    }
+
+    .project-meta h4 {
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink);
+      margin: 0 0 10px;
+    }
+
+    .project-meta ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .project-meta li {
+      position: relative;
+      padding-left: 14px;
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--mid);
+      margin: 0 0 6px;
+    }
+
+    .project-meta li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 10px;
+      width: 6px;
+      height: 1px;
+      background: var(--accent);
+    }
+
+    /* WHY */
+    .why {
+      background: var(--dim);
+    }
+
+    .why-grid {
+      display: grid;
+      grid-template-columns: 1.05fr 1fr;
+      gap: 84px;
+      align-items: start;
+    }
+
+    .why h2 {
+      font-family: var(--serif);
+      font-size: clamp(30px, 3.8vw, 48px);
+      line-height: 1.16;
+      font-weight: 400;
+      margin: 0 0 24px;
+      color: var(--ink);
+    }
+
+    .why-copy p {
+      font-size: 19px;
+      line-height: 1.9;
+      color: var(--mid);
+      margin: 0 0 18px;
+    }
+
+    .why-copy p:last-child { margin-bottom: 0; }
+
+    .why-copy strong {
+      color: var(--ink);
+      font-weight: 400;
+    }
+
+    .why-list {
+      list-style: none;
+      border-top: 1px solid var(--border);
+    }
+
+    .why-list li {
+      display: flex;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid var(--border);
+      font-size: 17px;
+      line-height: 1.72;
+      color: var(--mid);
+    }
+
+    .why-list li::before {
+      content: "";
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+      margin-top: 12px;
+      flex-shrink: 0;
+    }
+
+    .why-list strong {
+      display: block;
+      color: var(--ink);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px;
+    }
+
+    .service-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 28px 24px 24px;
+      min-height: 100%;
+    }
+
+    .service-num {
+      display: block;
+      font-family: var(--mono);
+      font-size: 10px;
+      letter-spacing: 0.16em;
+      color: var(--accent);
+      margin-bottom: 16px;
+    }
+
+    .service-card h3 {
+      font-family: var(--serif);
+      font-size: 22px;
+      line-height: 1.2;
+      font-weight: 400;
+      margin: 0 0 12px;
+      color: var(--ink);
+    }
+
+    .service-card p {
+      font-size: 16px;
+      line-height: 1.8;
+      color: var(--mid);
+    }
+
+    /* PRICING */
+    .pricing {
+      background: var(--dark);
+      color: var(--paper);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .pricing::before {
+      content: "";
+      position: absolute;
+      bottom: -140px;
+      left: -80px;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,85,40,0.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .pricing .section-label {
+      color: var(--green);
+    }
+
+    .pricing .section-label::before {
+      background: var(--green);
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pricing h2 {
+      font-family: var(--serif);
+      font-size: clamp(30px, 4vw, 50px);
+      line-height: 1.15;
+      font-weight: 400;
+      color: var(--paper);
+      margin: 0 0 22px;
+    }
+
+    .pricing-copy p {
+      font-size: 19px;
+      line-height: 1.9;
+      color: rgba(237,228,216,0.78);
+      margin: 0 0 18px;
+    }
+
+    .pricing-copy p:last-child { margin-bottom: 0; }
+
+    .pricing-copy strong {
+      color: #f2ebe0;
+      font-weight: 500;
+    }
+
+    .pricing-points {
+      list-style: none;
+      border-top: 1px solid rgba(237,228,216,0.12);
+    }
+
+    .pricing-points li {
+      display: flex;
+      gap: 16px;
+      padding: 18px 0;
+      border-bottom: 1px solid rgba(237,228,216,0.12);
+      color: rgba(237,228,216,0.72);
+      font-size: 17px;
+      line-height: 1.7;
+    }
+
+    .pricing-points li::before {
+      content: "";
+      width: 20px;
+      height: 1px;
+      background: var(--accent);
+      margin-top: 12px;
+      flex-shrink: 0;
+    }
+
+    .pricing-points strong {
+      display: block;
+      color: var(--paper);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    /* PROCESS */
+    .process {
+      background: var(--paper);
+    }
+
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 38px;
+      position: relative;
+    }
+
+    .process-steps::before {
+      content: "";
+      position: absolute;
+      top: 19px;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, var(--accent), rgba(184,85,40,0.15));
+      z-index: 0;
+    }
+
+    .step {
+      position: relative;
+      z-index: 1;
+      padding-top: 46px;
+    }
+
+    .step-dot {
+      position: absolute;
+      top: 12px;
+      left: 0;
+      width: 15px;
+      height: 15px;
+      border-radius: 50%;
+      background: var(--paper);
+      border: 2px solid var(--accent);
+    }
+
+    .step-num {
+      font-family: var(--serif);
+      font-size: 56px;
+      line-height: 1;
+      color: rgba(184,85,40,0.15);
+      font-style: italic;
+      margin: 0 0 14px;
+    }
+
+    .step h3 {
+      font-family: var(--serif);
+      font-size: 21px;
+      font-weight: 400;
+      margin: 0 0 12px;
+      color: var(--ink);
+    }
+
+    .step p {
+      font-size: 17px;
+      line-height: 1.82;
+      color: var(--mid);
+    }
+
+    /* CTA */
+    .contact {
+      text-align: center;
+      background: var(--paper);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact::before {
+      content: "";
+      position: absolute;
+      bottom: -120px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 700px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,85,40,0.09) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .contact-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contact h2 {
+      font-family: var(--serif);
+      font-size: clamp(36px, 5vw, 62px);
+      line-height: 1.1;
+      font-weight: 400;
+      margin: 0 0 18px;
+      color: var(--ink);
+    }
+
+    .contact h2 em {
+      color: var(--accent);
+      font-style: italic;
+    }
+
+    .contact p {
+      font-size: 19px;
+      line-height: 1.85;
+      color: var(--mid);
+      margin: 0 0 42px;
+    }
+
+    .contact-actions {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 18px;
+    }
+
+    .divider-or {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      color: rgba(42,36,32,0.35);
+      text-transform: uppercase;
+    }
+
+    .contact-email {
+      font-family: var(--serif);
+      font-size: clamp(18px, 2vw, 24px);
+      color: var(--mid);
+      font-style: italic;
+      cursor: pointer;
+      border-bottom: 1px solid rgba(184,85,40,0.3);
+      padding-bottom: 2px;
+      transition: color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .contact-email:hover {
+      color: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .copy-note {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: rgba(42,36,32,0.35);
+      min-height: 16px;
+    }
+
+    .copy-note.copied {
+      color: var(--green);
+    }
+
+    /* FOOTER */
+    #site-footer {
+      background: var(--dark);
+      padding: 38px 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+      border-top: 1px solid rgba(184,85,40,0.18);
+    }
+
+    .sf-left {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .sf-name {
+      font-family: var(--serif);
+      font-size: 22px;
+      color: var(--paper);
+      font-weight: 400;
+    }
+
+    .sf-tagline {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: rgba(237,228,216,0.4);
+    }
+
+    .sf-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 10px;
+    }
+
+    .sf-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
+
+    .sf-links a {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: rgba(237,228,216,0.45);
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    .sf-links a:hover {
+      color: var(--accent);
+    }
+
+    .sf-copy {
+      font-family: var(--mono);
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: rgba(237,228,216,0.25);
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 1100px) {
+      .services-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process-steps {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .process-steps::before {
+        display: none;
+      }
+    }
+
+    @media (max-width: 900px) {
+      #ir-header {
+        padding: 16px 24px;
+      }
+
+      #ir-header.scrolled {
+        padding: 12px 24px;
+      }
+
+      .hdr-nav a:not(.hdr-cta) {
+        display: none;
+      }
+
+      .section,
+      .hero {
+        padding-left: 28px;
+        padding-right: 28px;
+      }
+
+      .section {
+        padding-top: 72px;
+        padding-bottom: 72px;
+      }
+
+      .hero {
+        padding-top: 118px;
+        padding-bottom: 64px;
+        min-height: auto;
+      }
+
+      .intro-grid,
+      .why-grid,
+      .pricing-grid,
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 34px;
+      }
+
+      .project-meta {
+        grid-template-columns: 1fr;
+      }
+
+      #site-footer {
+        padding: 32px 24px;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .sf-right {
+        align-items: flex-start;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .hero h1 {
+        font-size: 42px;
+        max-width: 10ch;
+      }
+
+      .hero-sub,
+      .intro-copy p,
+      .why-copy p,
+      .pricing-copy p,
+      .contact p {
+        font-size: 18px;
+      }
+
+      .services-grid,
+      .process-steps {
+        grid-template-columns: 1fr;
+      }
+
+      .btn-primary,
+      .btn-secondary {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- HERO -->
-<section class="hero container">
-  <p class="small">Web Design & Development</p>
-  <h1>A website that looks good is only the start.</h1>
+  <header id="ir-header">
+    <a href="#" class="hdr-name">Ian Ramsay</a>
+    <nav class="hdr-nav">
+      <a href="#work">Work</a>
+      <a href="#why">Why me</a>
+      <a href="#services">What I build</a>
+      <a href="#process">Process</a>
+      <a
+        href="https://docs.google.com/forms/d/e/1FAIpQLSfdFApfy1RrHype4oDotvEF3XM7VC-tbB9VbbZmHKmb-YVfvQ/viewform?usp=header"
+        target="_blank"
+        rel="noopener"
+        class="hdr-cta"
+      >Get in touch</a>
+    </nav>
+  </header>
 
-  <p>
-    I design and build websites that actually work for your business and your customers — including the custom parts that standard setups often cannot handle.
-  </p>
+  <main>
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-inner wrap">
+        <p class="hero-eyebrow">Web Design &amp; Development</p>
+        <h1>A website that looks good is <em>only the start.</em></h1>
+        <p class="hero-sub">
+          I design and build websites that work properly for <strong>your business and your customers</strong> —
+          including the custom parts that standard setups often cannot handle.
+        </p>
+        <p class="hero-sub">
+          From polished business websites to bookings, protected content, membership platforms and more tailored functionality,
+          I help clients build <strong>what they actually need online</strong>.
+        </p>
+        <div class="hero-actions">
+          <a
+            class="btn btn-primary"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfdFApfy1RrHype4oDotvEF3XM7VC-tbB9VbbZmHKmb-YVfvQ/viewform?usp=header"
+            target="_blank"
+            rel="noopener"
+          >Start a project</a>
+          <a class="btn btn-secondary" href="#work">View selected work</a>
+        </div>
+        <p class="hero-note">Independent builder based in Ireland. Direct communication. Fair, sensible pricing.</p>
+      </div>
+    </section>
 
-  <p>
-    From clean business websites to membership platforms, bookings and tailored functionality, I help clients build what they actually need online.
-  </p>
+    <!-- INTRO -->
+    <section class="section intro">
+      <div class="wrap">
+        <div class="section-label">About</div>
+        <div class="intro-grid">
+          <h2>Not just web design.<br><em>Real build capability too.</em></h2>
+          <div class="intro-copy">
+            <p>
+              I don’t just design pages. I know how to code, solve problems, and build the parts underneath a website that make it actually useful.
+            </p>
+            <p>
+              That means if your project needs more than a standard brochure site — whether that’s a better user journey, bookings, protected content, custom sections, integrations, or functionality tailored to your customers — <strong>I can help shape and build that properly</strong>.
+            </p>
+            <p>
+              The result is a website that is not boxed in by what a template happens to allow. It can be built around what you need it to do.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <a href="#" class="cta">Start a project</a>
-</section>
+    <!-- WORK -->
+    <section class="section" id="work">
+      <div class="wrap">
+        <div class="section-label">Selected work</div>
 
-<!-- WHY -->
-<section class="dark">
-  <div class="container grid">
+        <div class="portfolio-grid">
+          <article class="project-card">
+            <div class="project-thumb">
+              <span>YourInnerRhythm.com</span>
+            </div>
+            <div class="project-body">
+              <div class="project-top">
+                <span class="project-kicker">Membership Platform</span>
+                <a class="project-link" href="https://www.yourinnerrhythm.com" target="_blank" rel="noopener">Visit site</a>
+              </div>
+              <h3 class="project-title">Your Inner Rhythm</h3>
+              <p class="project-summary">
+                A full membership website with protected audio content, backend integration, and a setup that could be updated easily over time.
+              </p>
+              <div class="project-meta">
+                <div>
+                  <h4>Needed</h4>
+                  <ul>
+                    <li>Protected audio content</li>
+                    <li>Backend integration</li>
+                    <li>Easy ongoing updates</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Delivered</h4>
+                  <ul>
+                    <li>Members-only content flow</li>
+                    <li>Practical backend structure</li>
+                    <li>Custom functionality where needed</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
 
-    <div>
-      <p class="small">Why work with me</p>
-      <h2>One person. Real capability.</h2>
+          <article class="project-card">
+            <div class="project-thumb">
+              <span>Calodagh.com</span>
+            </div>
+            <div class="project-body">
+              <div class="project-top">
+                <span class="project-kicker">B2B Website</span>
+                <a class="project-link" href="https://www.calodagh.com" target="_blank" rel="noopener">Visit site</a>
+              </div>
+              <h3 class="project-title">Calodagh</h3>
+              <p class="project-summary">
+                A professional B2B website for organisations and corporate audiences, built to perform well on both desktop and mobile, with booking capability and SEO considered from the start.
+              </p>
+              <div class="project-meta">
+                <div>
+                  <h4>Needed</h4>
+                  <ul>
+                    <li>Professional corporate presence</li>
+                    <li>Good mobile and desktop experience</li>
+                    <li>Booking capability</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Delivered</h4>
+                  <ul>
+                    <li>Clear B2B positioning</li>
+                    <li>Responsive build</li>
+                    <li>SEO-optimised structure</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
 
-      <p>
-        I’m not just designing pages. I know how to build what sits underneath them.
-      </p>
+          <article class="project-card">
+            <div class="project-thumb">
+              <span>SpiritualEarth.com</span>
+            </div>
+            <div class="project-body">
+              <div class="project-top">
+                <span class="project-kicker">B2C Website</span>
+                <a class="project-link" href="https://www.spiritualearth.com" target="_blank" rel="noopener">Visit site</a>
+              </div>
+              <h3 class="project-title">Spiritual Earth</h3>
+              <p class="project-summary">
+                A customer-facing website for a wellbeing brand, built around bookings, visibility, and a smoother experience for people moving through the site.
+              </p>
+              <div class="project-meta">
+                <div>
+                  <h4>Needed</h4>
+                  <ul>
+                    <li>Booking capability</li>
+                    <li>B2C customer journey</li>
+                    <li>SEO support</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Delivered</h4>
+                  <ul>
+                    <li>Booking-led website structure</li>
+                    <li>Cleaner client journey</li>
+                    <li>SEO-conscious setup</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
 
-      <p>
-        That means if your website needs something custom — protected content, booking flows, integrations or something more specific to your business — I can help make that happen directly.
-      </p>
+          <article class="project-card">
+            <div class="project-thumb">
+              <span>Launching Soon</span>
+            </div>
+            <div class="project-body">
+              <div class="project-top">
+                <span class="project-kicker">Small Business Website</span>
+                <span class="project-link">Not live yet</span>
+              </div>
+              <h3 class="project-title">Andrea Rochford</h3>
+              <p class="project-summary">
+                A five-page website for an Irish celebrant business, designed to help an up-and-coming business look established, trustworthy, and easy to understand.
+              </p>
+              <div class="project-meta">
+                <div>
+                  <h4>Needed</h4>
+                  <ul>
+                    <li>Professional small business website</li>
+                    <li>Clear service structure</li>
+                    <li>SEO-ready foundation</li>
+                  </ul>
+                </div>
+                <div>
+                  <h4>Delivered</h4>
+                  <ul>
+                    <li>Clean five-page build</li>
+                    <li>Trust-building presentation</li>
+                    <li>Strong launch-ready structure</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-      <p>
-        No handoffs. No confusion between design and development. Just one person who understands the whole thing.
-      </p>
+    <!-- WHY -->
+    <section class="section why" id="why">
+      <div class="wrap">
+        <div class="why-grid">
+          <div>
+            <div class="section-label">Why work with me</div>
+            <h2>One person. Good taste. Real hands-on capability.</h2>
+            <div class="why-copy">
+              <p>
+                A lot of people can make a website look decent. Far fewer can also build the custom parts that make it properly useful.
+              </p>
+              <p>
+                Because I work hands-on and know how to code, I can help with both sides of the project — <strong>how it looks to your customers, and how it functions underneath</strong>.
+              </p>
+              <p>
+                That means fewer compromises, fewer handoffs, and more freedom to build what actually makes sense for your business instead of being limited by a standard setup.
+              </p>
+            </div>
+          </div>
+
+          <ul class="why-list">
+            <li><div><strong>Direct communication</strong>You deal with me from start to finish, not an account manager or a handoff halfway through.</div></li>
+            <li><div><strong>Design + build in one place</strong>The visual side and the practical side are connected, which usually leads to a much better result.</div></li>
+            <li><div><strong>Custom where it matters</strong>If your site needs something beyond the standard template, that is part of the job — not a problem.</div></li>
+            <li><div><strong>Built around real needs</strong>I am comfortable tailoring things to suit your business and the way your customers actually use the site.</div></li>
+            <li><div><strong>No agency drag</strong>You are paying for useful work and sensible problem-solving, not layers of overhead.</div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <div class="wrap">
+        <div class="section-label">What I build</div>
+        <div class="services-grid">
+          <div class="service-card">
+            <span class="service-num">01</span>
+            <h3>Business Websites</h3>
+            <p>Clean, credible websites for businesses, sole traders, founders and service brands that want to look established online.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-num">02</span>
+            <h3>Membership Platforms</h3>
+            <p>Protected content, user access, gated experiences and the backend structure needed to support them properly.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-num">03</span>
+            <h3>Bookings &amp; User Journeys</h3>
+            <p>Websites designed around the actions people need to take — whether that is enquiring, booking, joining or buying.</p>
+          </div>
+          <div class="service-card">
+            <span class="service-num">04</span>
+            <h3>Custom Functionality</h3>
+            <p>When a project needs something more tailored for the business or the customer, I can usually build a practical solution.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRICING -->
+    <section class="section pricing">
+      <div class="wrap">
+        <div class="pricing-grid">
+          <div>
+            <div class="section-label">Approach</div>
+            <h2>Fair pricing. Sensible scope. Willing to go further when it matters.</h2>
+            <div class="pricing-copy">
+              <p>
+                I price projects based on the work involved and the value of what is being built — clearly and reasonably.
+              </p>
+              <p>
+                I also genuinely enjoy stretching a project further when there is a better way to do something, or when a more tailored solution would improve the end result.
+              </p>
+              <p>
+                So while the pricing should stay fair, the attitude is not minimal. <strong>I’m happy to go above and beyond to get something right</strong> — especially when that helps create a stronger website for you and helps me keep developing my own capability at the same time.
+              </p>
+            </div>
+          </div>
+
+          <ul class="pricing-points">
+            <li><div><strong>Clear, fixed pricing where possible</strong>No padded retainers or unnecessary complexity for the sake of it.</div></li>
+            <li><div><strong>Paying for real work</strong>The focus is on what is useful and what improves the result, not on inflating hours.</div></li>
+            <li><div><strong>Flexible where it helps</strong>If there is a smarter or more tailored way to do something, I’m open to pushing the work further.</div></li>
+            <li><div><strong>Built with care</strong>I want the finished site to genuinely work well for the business and the people using it.</div></li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS -->
+    <section class="section process" id="process">
+      <div class="wrap">
+        <div class="section-label">Process</div>
+        <div class="process-steps">
+          <div class="step">
+            <div class="step-dot"></div>
+            <div class="step-num">01</div>
+            <h3>Conversation</h3>
+            <p>We talk through what you need, what the website has to do, and what would actually make sense for your business.</p>
+          </div>
+          <div class="step">
+            <div class="step-dot"></div>
+            <div class="step-num">02</div>
+            <h3>Clear proposal</h3>
+            <p>You get a straightforward outline of scope, pricing and direction, in plain English and without padded jargon.</p>
+          </div>
+          <div class="step">
+            <div class="step-dot"></div>
+            <div class="step-num">03</div>
+            <h3>Design &amp; build</h3>
+            <p>I design and build the site with the structure, functionality and look it needs, keeping things practical and tailored.</p>
+          </div>
+          <div class="step">
+            <div class="step-dot"></div>
+            <div class="step-num">04</div>
+            <h3>Launch &amp; support</h3>
+            <p>We launch properly, make sure everything is behaving as it should, and I stay available if the project grows or needs updates.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section contact" id="contact">
+      <div class="contact-inner">
+        <div class="section-label" style="justify-content:center;">Contact</div>
+        <h2>Tell me what you need <em>built.</em></h2>
+        <p>
+          Whether it’s a straightforward website or something with more moving parts,
+          I’m happy to talk it through and see what makes sense.
+        </p>
+
+        <div class="contact-actions">
+          <a
+            class="btn btn-primary"
+            href="https://docs.google.com/forms/d/e/1FAIpQLSfdFApfy1RrHype4oDotvEF3XM7VC-tbB9VbbZmHKmb-YVfvQ/viewform?usp=header"
+            target="_blank"
+            rel="noopener"
+          >Get in touch</a>
+
+          <span class="divider-or">or</span>
+
+          <span class="contact-email" id="email-link"></span>
+          <p class="copy-note" id="copy-note">click address to copy</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer id="site-footer">
+    <div class="sf-left">
+      <span class="sf-name">Ian Ramsay</span>
+      <span class="sf-tagline">Web Design &amp; Development</span>
     </div>
-
-    <div>
-      <ul>
-        <li><strong>Direct communication</strong> — you deal with me from start to finish</li>
-        <li><strong>Design + build</strong> — both sides handled properly</li>
-        <li><strong>Custom capability</strong> — not limited to templates</li>
-        <li><strong>Practical outcomes</strong> — built around your business</li>
-      </ul>
+    <div class="sf-right">
+      <nav class="sf-links">
+        <a href="#work">Work</a>
+        <a href="#contact">Contact</a>
+        <a href="/privacy-policy">Privacy</a>
+      </nav>
+      <span class="sf-copy">&copy; Ian Ramsay 2026</span>
     </div>
+  </footer>
 
-  </div>
-</section>
+  <script>
+    (function () {
+      var hdr = document.getElementById('ir-header');
+      window.addEventListener('scroll', function () {
+        if (window.scrollY > 40) {
+          hdr.classList.add('scrolled');
+        } else {
+          hdr.classList.remove('scrolled');
+        }
+      });
+    })();
 
-<!-- WORK -->
-<section class="container">
-  <p class="small">Selected work</p>
+    (function () {
+      var u = 'Ian.Ramsay.jeeves';
+      var d = 'gmail.com';
+      var addr = u + '@' + d;
+      var emailEl = document.getElementById('email-link');
+      var copyNote = document.getElementById('copy-note');
 
-  <div class="grid">
+      if (!emailEl || !copyNote) return;
 
-    <div class="card">
-      <h3>Your Inner Rhythm</h3>
-      <p>Membership platform with protected audio content and backend integration.</p>
-      <ul>
-        <li>Gated content</li>
-        <li>User access</li>
-        <li>Custom structure</li>
-      </ul>
-    </div>
+      emailEl.textContent = addr;
 
-    <div class="card">
-      <h3>Calodagh</h3>
-      <p>Professional B2B website with booking capability and SEO structure.</p>
-      <ul>
-        <li>Corporate positioning</li>
-        <li>Mobile + desktop</li>
-        <li>SEO setup</li>
-      </ul>
-    </div>
+      emailEl.addEventListener('click', function () {
+        if (navigator.clipboard) {
+          navigator.clipboard.writeText(addr).then(function () {
+            copyNote.textContent = 'Copied to clipboard.';
+            copyNote.classList.add('copied');
 
-    <div class="card">
-      <h3>Spiritual Earth</h3>
-      <p>B2C website designed for bookings, visibility and client journey.</p>
-      <ul>
-        <li>Booking-led structure</li>
-        <li>SEO focused</li>
-        <li>Clean UX</li>
-      </ul>
-    </div>
-
-    <div class="card">
-      <h3>Andrea Rochford</h3>
-      <p>Five-page website for a growing small business (launching soon).</p>
-      <ul>
-        <li>Clear service pages</li>
-        <li>Trust building</li>
-        <li>SEO foundation</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<!-- PRICING / PHILOSOPHY -->
-<section class="dark">
-  <div class="container grid">
-
-    <div>
-      <p class="small">Approach</p>
-      <h2>Fair pricing. Built properly.</h2>
-
-      <p>
-        I price projects based on the work involved — clearly and reasonably.
-      </p>
-
-      <p>
-        If something needs to be figured out, improved, or built in a better way, I’m happy to go further to get the right result.
-      </p>
-
-      <p>
-        That benefits you with a stronger outcome — and it allows me to keep developing my own capability at the same time.
-      </p>
-    </div>
-
-    <div>
-      <ul>
-        <li>No inflated agency retainers</li>
-        <li>No charging for unnecessary complexity</li>
-        <li>Focus on value, not padding hours</li>
-        <li>Willingness to go beyond the brief when it improves the result</li>
-      </ul>
-    </div>
-
-  </div>
-</section>
-
-<!-- SERVICES -->
-<section class="container">
-  <p class="small">What I build</p>
-
-  <div class="grid">
-
-    <div class="card">
-      <h3>Websites</h3>
-      <p>Business, personal brand and service websites that feel considered and credible.</p>
-    </div>
-
-    <div class="card">
-      <h3>Membership Platforms</h3>
-      <p>Protected content, user accounts and structured backend setups.</p>
-    </div>
-
-    <div class="card">
-      <h3>Booking & User Flows</h3>
-      <p>Websites designed around real customer journeys and actions.</p>
-    </div>
-
-    <div class="card">
-      <h3>Custom Functionality</h3>
-      <p>Anything beyond standard setups — built around what you actually need.</p>
-    </div>
-
-  </div>
-</section>
-
-<!-- CTA -->
-<section class="dark">
-  <div class="container" style="text-align:center;">
-
-    <h2>Tell me what you need built.</h2>
-
-    <p>
-      If you have something in mind — whether it’s straightforward or more complex —
-      I’m happy to talk it through and see what makes sense.
-    </p>
-
-    <a href="#" class="cta">Get in touch</a>
-
-  </div>
-</section>
-
-<!-- FOOTER -->
-<div class="footer">
-  © Ian Ramsay 2026
-</div>
-
+            setTimeout(function () {
+              copyNote.textContent = 'click address to copy';
+              copyNote.classList.remove('copied');
+            }, 2600);
+          }).catch(function () {
+            window.location.href = 'mailto:' + addr;
+          });
+        } else {
+          window.location.href = 'mailto:' + addr;
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
