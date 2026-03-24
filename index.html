@@ -1,0 +1,930 @@
+<style>
+  #ir-page {
+    --ir-ink:    #2a2420;
+    --ir-paper:  #ede4d8;
+    --ir-dim:    #e4d9ca;
+    --ir-card:   #f2ebe0;
+    --ir-accent: #b85528;
+    --ir-green:  #6a9178;
+    --ir-mid:    #7a7068;
+    --ir-dark:   #2e2820;
+    --ir-mono:   'DM Mono', monospace;
+    --ir-serif:  'Playfair Display', Georgia, serif;
+    --ir-sans:   'Jost', sans-serif;
+
+    font-family: var(--ir-sans);
+    font-weight: 300;
+    font-size: 20px;
+    line-height: 1.8;
+    color: var(--ir-ink);
+    overflow-x: hidden;
+    margin: 0;
+    padding: 0;
+  }
+
+  #ir-page *, #ir-page *::before, #ir-page *::after {
+    box-sizing: border-box;
+  }
+
+  /* ── HERO ── */
+  #ir-page .ir-hero {
+    background: var(--ir-paper);
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding: 16px 56px 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #ir-page .ir-hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 20%, rgba(184,85,40,0.06) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  #ir-page .ir-hero-grid {
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(42,36,32,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(42,36,32,0.05) 1px, transparent 1px);
+    background-size: 72px 72px;
+    animation: ir-gridFade 1.4s ease both;
+  }
+
+  @keyframes ir-gridFade {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+  }
+
+  @keyframes ir-rise {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  @keyframes ir-lineGrow {
+    from { transform: scaleY(0); }
+    to   { transform: scaleY(1); }
+  }
+
+  #ir-page .ir-hero-eyebrow {
+    font-family: var(--ir-mono);
+    font-size: 11px;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--ir-accent);
+    margin: 0 0 28px;
+    position: relative;
+    z-index: 1;
+    animation: ir-rise 0.9s 0.2s ease both;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  #ir-page .ir-hero-eyebrow::before {
+    content: '';
+    width: 28px;
+    height: 1px;
+    background: var(--ir-accent);
+    display: block;
+    flex-shrink: 0;
+  }
+
+  #ir-page .ir-hero-h1 {
+    font-family: var(--ir-serif);
+    font-size: clamp(44px, 6.5vw, 100px);
+    font-weight: 400;
+    line-height: 1.04;
+    letter-spacing: -0.015em;
+    color: var(--ir-ink);
+    max-width: 13ch;
+    margin: 0 0 36px;
+    position: relative;
+    z-index: 1;
+    animation: ir-rise 0.9s 0.35s ease both;
+  }
+
+  #ir-page .ir-hero-h1 em {
+    font-style: italic;
+    color: var(--ir-accent);
+  }
+
+  #ir-page .ir-hero-sub {
+    font-size: 20px;
+    font-weight: 300;
+    color: var(--ir-mid);
+    max-width: 50ch;
+    line-height: 1.8;
+    margin: 0;
+    position: relative;
+    z-index: 1;
+    animation: ir-rise 0.9s 0.5s ease both;
+  }
+
+  #ir-page .ir-hero-sub strong {
+    color: var(--ir-ink);
+    font-weight: 400;
+  }
+
+  #ir-page .ir-scroll-hint {
+    position: absolute;
+    bottom: 44px;
+    right: 56px;
+    font-family: var(--ir-mono);
+    font-size: 10px;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--ir-mid);
+    writing-mode: vertical-rl;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    z-index: 1;
+    animation: ir-rise 0.9s 0.8s ease both;
+  }
+
+  #ir-page .ir-scroll-hint::before {
+    content: '';
+    width: 1px;
+    height: 52px;
+    background: linear-gradient(to bottom, transparent, var(--ir-accent));
+    display: block;
+    animation: ir-lineGrow 1s 1.2s ease both;
+    transform-origin: top;
+  }
+
+  /* ── SHARED ── */
+  #ir-page .ir-section {
+    padding: 96px 56px;
+    background: var(--ir-paper);
+  }
+
+  #ir-page .ir-section-label {
+    font-family: var(--ir-mono);
+    font-size: 10px;
+    letter-spacing: 0.28em;
+    text-transform: uppercase;
+    color: var(--ir-accent);
+    margin: 0 0 52px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  #ir-page .ir-section-label::before {
+    content: '';
+    width: 24px;
+    height: 1px;
+    background: var(--ir-accent);
+    display: block;
+    flex-shrink: 0;
+  }
+
+  /* ── INTRO ── */
+  #ir-page .ir-intro {
+    background: var(--ir-dark);
+    color: var(--ir-paper);
+    padding: 96px 56px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #ir-page .ir-intro::before {
+    content: '';
+    position: absolute;
+    top: -120px;
+    right: -80px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(106,145,120,0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  #ir-page .ir-intro .ir-section-label {
+    color: var(--ir-green);
+  }
+
+  #ir-page .ir-intro .ir-section-label::before {
+    background: var(--ir-green);
+  }
+
+  #ir-page .ir-intro-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: start;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  #ir-page .ir-intro-h2 {
+    font-family: var(--ir-serif);
+    font-size: clamp(32px, 3.8vw, 52px);
+    font-weight: 400;
+    line-height: 1.18;
+    color: var(--ir-paper);
+    letter-spacing: -0.01em;
+    margin: 0;
+  }
+
+  #ir-page .ir-intro-h2 em {
+    font-style: italic;
+    color: var(--ir-green);
+  }
+
+  #ir-page .ir-intro-body p {
+    font-size: 19px;
+    color: rgba(237,228,216,0.82);
+    margin: 0 0 22px;
+    line-height: 1.95;
+  }
+
+  #ir-page .ir-intro-body p:last-child { margin-bottom: 0; }
+
+  #ir-page .ir-intro-body p strong {
+    color: #f0e8db;
+    font-weight: 500;
+  }
+
+  /* ── SERVICES ── */
+  #ir-page .ir-services-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  #ir-page .ir-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  #ir-page .ir-svc-card {
+    background: var(--ir-card);
+    padding: 40px 32px 36px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(42,36,32,0.1);
+    border-radius: 2px;
+    transition: transform 0.25s ease, box-shadow 0.25s ease;
+    box-shadow: 0 1px 3px rgba(42,36,32,0.06);
+  }
+
+  #ir-page .ir-svc-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 3px;
+    height: 0;
+    background: var(--ir-accent);
+    transition: height 0.3s ease;
+  }
+
+  #ir-page .ir-svc-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(42,36,32,0.1);
+  }
+
+  #ir-page .ir-svc-card:hover::before {
+    height: 100%;
+  }
+
+  #ir-page .ir-svc-num {
+    font-family: var(--ir-mono);
+    font-size: 10px;
+    letter-spacing: 0.18em;
+    color: var(--ir-accent);
+    margin: 0 0 20px;
+    display: block;
+    opacity: 0.8;
+  }
+
+  #ir-page .ir-svc-title {
+    font-family: var(--ir-serif);
+    font-size: 24px;
+    font-weight: 400;
+    line-height: 1.2;
+    color: var(--ir-ink);
+    margin: 0 0 14px;
+  }
+
+  #ir-page .ir-svc-body {
+    font-size: 17px;
+    color: var(--ir-mid);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  #ir-page .ir-svc-tags {
+    margin: 20px 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 7px;
+    padding: 0;
+    list-style: none;
+  }
+
+  #ir-page .ir-svc-tag {
+    font-family: var(--ir-mono);
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    padding: 3px 9px;
+    border: 1px solid rgba(42,36,32,0.18);
+    color: var(--ir-mid);
+    border-radius: 2px;
+    background: rgba(42,36,32,0.03);
+  }
+
+  /* ── PROCESS ── */
+  #ir-page .ir-process {
+    background: var(--ir-dim);
+    padding: 96px 56px;
+  }
+
+  #ir-page .ir-process-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  #ir-page .ir-process-steps {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    position: relative;
+  }
+
+  #ir-page .ir-process-steps::before {
+    content: '';
+    position: absolute;
+    top: 20px;
+    left: 0; right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, var(--ir-accent), rgba(184,85,40,0.15));
+    z-index: 0;
+  }
+
+  #ir-page .ir-step {
+    position: relative;
+    padding-top: 48px;
+    z-index: 1;
+  }
+
+  #ir-page .ir-step-dot {
+    position: absolute;
+    top: 13px;
+    left: 0;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background: var(--ir-dim);
+    border: 2px solid var(--ir-accent);
+  }
+
+  #ir-page .ir-step-n {
+    font-family: var(--ir-serif);
+    font-size: 56px;
+    font-weight: 400;
+    font-style: italic;
+    color: rgba(184,85,40,0.15);
+    line-height: 1;
+    margin: 0 0 16px;
+    letter-spacing: -0.02em;
+  }
+
+  #ir-page .ir-step-title {
+    font-family: var(--ir-serif);
+    font-size: 21px;
+    font-weight: 400;
+    color: var(--ir-ink);
+    margin: 0 0 12px;
+  }
+
+  #ir-page .ir-step-body {
+    font-size: 18px;
+    color: var(--ir-mid);
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  /* ── WHO ── */
+  #ir-page .ir-who-inner {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  #ir-page .ir-who-grid {
+    display: grid;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 96px;
+    align-items: start;
+  }
+
+  #ir-page .ir-who-h2 {
+    font-family: var(--ir-serif);
+    font-size: clamp(30px, 3.6vw, 48px);
+    font-weight: 400;
+    line-height: 1.18;
+    color: var(--ir-ink);
+    margin: 0 0 28px;
+  }
+
+  #ir-page .ir-who-body p {
+    font-size: 19px;
+    color: var(--ir-mid);
+    margin: 0 0 18px;
+    line-height: 1.9;
+  }
+
+  #ir-page .ir-who-body p:last-child { margin-bottom: 0; }
+
+  #ir-page .ir-who-body p strong {
+    color: var(--ir-ink);
+    font-weight: 400;
+  }
+
+  #ir-page .ir-who-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  #ir-page .ir-who-list li {
+    display: flex;
+    gap: 16px;
+    padding: 18px 0;
+    border-bottom: 1px solid rgba(42,36,32,0.1);
+    font-size: 18px;
+    color: var(--ir-mid);
+    margin: 0;
+    align-items: flex-start;
+  }
+
+  #ir-page .ir-who-list li:first-child {
+    border-top: 1px solid rgba(42,36,32,0.1);
+  }
+
+  #ir-page .ir-who-list li::before {
+    content: '';
+    width: 20px;
+    height: 1px;
+    background: var(--ir-accent);
+    flex-shrink: 0;
+    margin-top: 12px;
+  }
+
+  #ir-page .ir-who-list li strong {
+    color: var(--ir-ink);
+    font-weight: 500;
+    display: block;
+    margin-bottom: 2px;
+    font-size: 17px;
+    font-family: var(--ir-sans);
+  }
+
+  /* ── CONTACT ── */
+  #ir-page .ir-contact {
+    background: var(--ir-dark);
+    padding: 96px 56px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #ir-page .ir-contact::before {
+    content: '';
+    position: absolute;
+    bottom: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 600px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(184,85,40,0.1) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  #ir-page .ir-contact-inner {
+    max-width: 620px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  #ir-page .ir-contact-h2 {
+    font-family: var(--ir-serif);
+    font-size: clamp(36px, 5vw, 62px);
+    font-weight: 400;
+    color: var(--ir-paper);
+    line-height: 1.12;
+    margin: 0 0 20px;
+  }
+
+  #ir-page .ir-contact-h2 em {
+    color: var(--ir-accent);
+    font-style: italic;
+  }
+
+  #ir-page .ir-contact-sub {
+    font-size: 19px;
+    color: rgba(237,228,216,0.6);
+    margin: 0 0 48px;
+    line-height: 1.8;
+  }
+
+  #ir-page .ir-contact-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+
+  #ir-page .ir-btn-primary {
+    display: inline-block;
+    font-family: var(--ir-mono);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--ir-dark);
+    background: var(--ir-paper);
+    text-decoration: none;
+    padding: 18px 44px;
+    border-radius: 1px;
+    transition: background 0.22s, color 0.22s, transform 0.22s;
+  }
+
+  #ir-page .ir-btn-primary:hover {
+    background: var(--ir-accent);
+    color: var(--ir-paper);
+    transform: translateY(-2px);
+  }
+
+  #ir-page .ir-divider-or {
+    font-family: var(--ir-mono);
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    color: rgba(237,228,216,0.25);
+  }
+
+  #ir-page .ir-contact-email {
+    font-family: var(--ir-serif);
+    font-size: clamp(17px, 2vw, 24px);
+    color: rgba(237,228,216,0.6);
+    border-bottom: 1px solid rgba(184,85,40,0.3);
+    padding-bottom: 3px;
+    transition: color 0.2s, border-color 0.2s;
+    cursor: pointer;
+    font-style: italic;
+  }
+
+  #ir-page .ir-contact-email:hover {
+    color: var(--ir-accent);
+    border-color: var(--ir-accent);
+  }
+
+  #ir-page .ir-copy-note {
+    font-family: var(--ir-mono);
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    color: rgba(237,228,216,0.22);
+    margin: 4px 0 0;
+    min-height: 18px;
+    transition: color 0.3s;
+  }
+
+  #ir-page .ir-copy-note.ir-copied { color: var(--ir-green); }
+
+  /* ── FOOT ── */
+  #ir-page .ir-foot {
+    background: var(--ir-dim);
+    padding: 22px 56px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top: 1px solid rgba(42,36,32,0.12);
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 0;
+  }
+
+  #ir-page .ir-foot-copy {
+    font-family: var(--ir-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--ir-mid);
+    margin: 0;
+    opacity: 0.7;
+  }
+
+  #ir-page .ir-foot-links a {
+    font-family: var(--ir-mono);
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    color: var(--ir-mid);
+    text-decoration: none;
+    transition: color 0.2s;
+    opacity: 0.7;
+  }
+
+  #ir-page .ir-foot-links a:hover {
+    color: var(--ir-accent);
+    opacity: 1;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    #ir-page .ir-hero          { padding: 12px 28px 64px; }
+    #ir-page .ir-scroll-hint   { display: none; }
+    #ir-page .ir-section       { padding: 72px 28px; }
+    #ir-page .ir-intro         { padding: 72px 28px; }
+    #ir-page .ir-intro-grid    { grid-template-columns: 1fr; gap: 36px; }
+    #ir-page .ir-services-grid { grid-template-columns: 1fr 1fr; }
+    #ir-page .ir-process       { padding: 72px 28px; }
+    #ir-page .ir-process-steps { grid-template-columns: 1fr 1fr; gap: 32px; }
+    #ir-page .ir-process-steps::before { display: none; }
+    #ir-page .ir-who-grid      { grid-template-columns: 1fr; gap: 44px; }
+    #ir-page .ir-contact       { padding: 72px 28px; }
+    #ir-page .ir-foot          { padding: 20px 28px; flex-direction: column; align-items: flex-start; }
+  }
+
+  @media (max-width: 560px) {
+    #ir-page .ir-hero-h1       { font-size: 42px; }
+    #ir-page .ir-services-grid { grid-template-columns: 1fr; }
+    #ir-page .ir-process-steps { grid-template-columns: 1fr; }
+    #ir-page .ir-btn-primary   { width: 100%; text-align: center; }
+  }
+</style>
+
+<div id="ir-page">
+
+  <!-- HERO -->
+  <div class="ir-hero">
+    <div class="ir-hero-grid"></div>
+    <p class="ir-hero-eyebrow">Web &amp; Digital Consultancy</p>
+    <h1 class="ir-hero-h1">You work hard.<br><em>Your website should too.</em></h1>
+    <p class="ir-hero-sub">
+      I help <strong>businesses and individuals</strong> build whatever they need online - from a clean five-page site to a full membership platform or web app. <strong>One person, full capability, none of the overhead.</strong>
+    </p>
+    <span class="ir-scroll-hint">scroll</span>
+  </div>
+
+  <!-- INTRO -->
+  <div class="ir-intro">
+    <div class="ir-section-label">About</div>
+    <div class="ir-intro-grid">
+      <h2 class="ir-intro-h2">Not an agency.<br><em>Better than that.</em></h2>
+      <div class="ir-intro-body">
+        <p>
+          Working with an agency often means a handoff to a junior, a bloated retainer,
+          and a site that's hard to touch after launch. Working with me means
+          <strong>one person who knows your project end to end</strong> - and stays available.
+        </p>
+        <p>
+          I work across the full range - brochure sites, e-commerce, membership and gated-content
+          platforms, custom web applications, email, integrations, and the backend infrastructure
+          that holds it all together. <strong>If it lives on the web, I can probably build it.</strong>
+          And I make sure <strong>the right people can find it</strong>: SEO built in from the start,
+          not bolted on as an afterthought.
+        </p>
+        <p>
+          Based in Ireland. Work with clients across Ireland, the UK, and further afield.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <div class="ir-section">
+    <div class="ir-services-inner">
+      <div class="ir-section-label">What I do</div>
+      <div class="ir-services-grid">
+
+        <div class="ir-svc-card">
+          <span class="ir-svc-num">01</span>
+          <h3 class="ir-svc-title">Websites</h3>
+          <p class="ir-svc-body">
+            Custom-built sites that look considered and behave properly across every device.
+            Squarespace specialist, with extensive experience writing custom code on top of it -
+            plus fully bespoke builds where the brief demands it. SEO-considered structure as standard.
+          </p>
+          <div class="ir-svc-tags">
+            <span class="ir-svc-tag">Squarespace</span>
+            <span class="ir-svc-tag">Bespoke Builds</span>
+            <span class="ir-svc-tag">HTML / CSS / JS</span>
+            <span class="ir-svc-tag">SEO</span>
+            <span class="ir-svc-tag">Responsive</span>
+          </div>
+        </div>
+
+        <div class="ir-svc-card">
+          <span class="ir-svc-num">02</span>
+          <h3 class="ir-svc-title">Membership &amp; Web Apps</h3>
+          <p class="ir-svc-body">
+            Platforms with real moving parts - gated content, user authentication, payments,
+            dashboards, and custom logic. Built to work reliably at every layer, from the
+            interface people use to the infrastructure underneath.
+          </p>
+          <div class="ir-svc-tags">
+            <span class="ir-svc-tag">Membership Sites</span>
+            <span class="ir-svc-tag">Web Apps</span>
+            <span class="ir-svc-tag">Auth &amp; Payments</span>
+            <span class="ir-svc-tag">Cloudflare Workers</span>
+            <span class="ir-svc-tag">Stripe</span>
+          </div>
+        </div>
+
+        <div class="ir-svc-card">
+          <span class="ir-svc-num">03</span>
+          <h3 class="ir-svc-title">Platform Integrations</h3>
+          <p class="ir-svc-body">
+            Connecting the moving parts - CRMs, email platforms, analytics, audio delivery,
+            third-party APIs. Built to work reliably, not just in theory. If you have
+            systems that don't talk to each other, that's a solvable problem.
+          </p>
+          <div class="ir-svc-tags">
+            <span class="ir-svc-tag">Zoho</span>
+            <span class="ir-svc-tag">Bunny CDN</span>
+            <span class="ir-svc-tag">Simplero</span>
+            <span class="ir-svc-tag">Mailchimp</span>
+            <span class="ir-svc-tag">APIs</span>
+          </div>
+        </div>
+
+        <div class="ir-svc-card">
+          <span class="ir-svc-num">04</span>
+          <h3 class="ir-svc-title">Email Design</h3>
+          <p class="ir-svc-body">
+            Branded HTML emails that hold together across clients and render beautifully
+            on mobile. Designed to feel like they came from a person, not a template.
+            Consistent with your site's visual identity without being a clone of it.
+          </p>
+          <div class="ir-svc-tags">
+            <span class="ir-svc-tag">HTML Email</span>
+            <span class="ir-svc-tag">Campaign Design</span>
+            <span class="ir-svc-tag">Sequences</span>
+            <span class="ir-svc-tag">Mobile-first</span>
+          </div>
+        </div>
+
+        <div class="ir-svc-card">
+          <span class="ir-svc-num">05</span>
+          <h3 class="ir-svc-title">Copywriting &amp; Content</h3>
+          <p class="ir-svc-body">
+            Web copy, email sequences, and page content that sounds like a real person
+            wrote it - because one did. Clean, direct, professional copy that
+            respects your voice rather than overwriting it with generic structure.
+          </p>
+          <div class="ir-svc-tags">
+            <span class="ir-svc-tag">Web Copy</span>
+            <span class="ir-svc-tag">Email Sequences</span>
+            <span class="ir-svc-tag">Brand Voice</span>
+            <span class="ir-svc-tag">SEO Copy</span>
+          </div>
+        </div>
+
+        <div class="ir-svc-card">
+          <span class="ir-svc-num">06</span>
+          <h3 class="ir-svc-title">Ongoing Support</h3>
+          <p class="ir-svc-body">
+            A lot of developers disappear after launch. I don't. Whether it's small
+            updates, new sections, or debugging something that's broken at the worst
+            possible time - I'm available and I'll know the project.
+          </p>
+          <div class="ir-svc-tags">
+            <span class="ir-svc-tag">Retainer</span>
+            <span class="ir-svc-tag">Ad-hoc</span>
+            <span class="ir-svc-tag">Maintenance</span>
+            <span class="ir-svc-tag">Consultancy</span>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- PROCESS -->
+  <div class="ir-process">
+    <div class="ir-process-inner">
+      <div class="ir-section-label">How it works</div>
+      <div class="ir-process-steps">
+        <div class="ir-step">
+          <div class="ir-step-dot"></div>
+          <div class="ir-step-n">01</div>
+          <h3 class="ir-step-title">A conversation</h3>
+          <p class="ir-step-body">We talk through what you're trying to do. No forms, no intake process. Just a straightforward conversation about where you are and where you want to get to.</p>
+        </div>
+        <div class="ir-step">
+          <div class="ir-step-dot"></div>
+          <div class="ir-step-n">02</div>
+          <h3 class="ir-step-title">A clear proposal</h3>
+          <p class="ir-step-body">You get a plain-English outline of what I'd do, what it will cost, and roughly when it'll be done. No surprises buried in the small print.</p>
+        </div>
+        <div class="ir-step">
+          <div class="ir-step-dot"></div>
+          <div class="ir-step-n">03</div>
+          <h3 class="ir-step-title">The work</h3>
+          <p class="ir-step-body">I get on with it. You'll hear from me when there's something to see or something to decide - not constant status updates about nothing.</p>
+        </div>
+        <div class="ir-step">
+          <div class="ir-step-dot"></div>
+          <div class="ir-step-n">04</div>
+          <h3 class="ir-step-title">Launch &amp; beyond</h3>
+          <p class="ir-step-body">We launch properly, make sure everything's working, and I stay available. Most clients stick around because it's easier than starting over with someone new.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHO -->
+  <div class="ir-section">
+    <div class="ir-who-inner">
+      <div class="ir-who-grid">
+        <div>
+          <div class="ir-section-label">Who I work with</div>
+          <h2 class="ir-who-h2">Anyone who needs something built online.</h2>
+          <div class="ir-who-body">
+            <p>
+              I work with <strong>businesses, sole traders, startups, and individuals</strong> -
+              across any sector. The common thread isn't industry, it's a standard: clients who
+              want their digital presence to actually reflect the quality of what they do.
+            </p>
+            <p>
+              Whether that's a clean five-page site or a full membership platform with a custom
+              backend, the approach is the same - <strong>built around your specific situation</strong>,
+              not whatever's easiest to ship.
+            </p>
+          </div>
+        </div>
+        <ul class="ir-who-list">
+          <li><div><strong>Small businesses and sole traders</strong>A proper online presence that reflects the quality of what you offer.</div></li>
+          <li><div><strong>Anyone launching or relaunching</strong>Built around what you actually need - not a template you've been squeezed into.</div></li>
+          <li><div><strong>Membership and subscription businesses</strong>Platforms with gated content, user accounts, and payment flows that have to work.</div></li>
+          <li><div><strong>Founders who need a web app</strong>Custom tools and platforms built properly, without agency overhead.</div></li>
+          <li><div><strong>Clients who want to be found</strong>SEO-considered builds with clean structure and fast load times.</div></li>
+          <li><div><strong>Ongoing clients who value continuity</strong>Someone who already knows the project and can turn things around quickly.</div></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="ir-contact" id="ir-contact">
+    <div class="ir-contact-inner">
+      <h2 class="ir-contact-h2">Let's talk about<br><em>your project.</em></h2>
+      <p class="ir-contact-sub">
+        Fill in the form and I'll get back to you, usually the same day.
+        Or just copy the email address below and send me a line directly.
+      </p>
+      <div class="ir-contact-btns">
+        <a class="ir-btn-primary"
+           href="https://docs.google.com/forms/d/e/1FAIpQLSfdFApfy1RrHype4oDotvEF3XM7VC-tbB9VbbZmHKmb-YVfvQ/viewform?usp=header"
+           target="_blank" rel="noopener">
+          Get in touch
+        </a>
+        <span class="ir-divider-or">or</span>
+        <span class="ir-contact-email" id="ir-email-link"></span>
+        <p class="ir-copy-note" id="ir-copy-note">click address to copy</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOT -->
+  <div class="ir-foot">
+    <p class="ir-foot-copy">&copy; Ian Ramsay 2026</p>
+    <nav class="ir-foot-links">
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSfdFApfy1RrHype4oDotvEF3XM7VC-tbB9VbbZmHKmb-YVfvQ/viewform?usp=header"
+         target="_blank" rel="noopener">Get in touch</a>
+    </nav>
+  </div>
+
+</div>
+
+<script>
+(function() {
+  var u = 'Ian.Ramsay.jeeves';
+  var d = 'gmail.com';
+  var addr = u + '@' + d;
+  var emailEl = document.getElementById('ir-email-link');
+  var copyNote = document.getElementById('ir-copy-note');
+  if (!emailEl || !copyNote) return;
+  emailEl.textContent = addr;
+  emailEl.addEventListener('click', function() {
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(addr).then(function() {
+        copyNote.textContent = 'Copied to clipboard.';
+        copyNote.classList.add('ir-copied');
+        setTimeout(function() {
+          copyNote.textContent = 'click address to copy';
+          copyNote.classList.remove('ir-copied');
+        }, 2800);
+      }).catch(function() { window.location.href = 'mailto:' + addr; });
+    } else {
+      window.location.href = 'mailto:' + addr;
+    }
+  });
+})();
+</script>
