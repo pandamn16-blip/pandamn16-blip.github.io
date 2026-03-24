@@ -543,13 +543,17 @@
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 18px;
+      /* subgrid rows so all cards align across the row */
+      grid-template-rows: auto;
+      align-items: stretch;
     }
 
     .service-card {
       background: var(--card);
       border: 1px solid var(--border);
       padding: 28px 24px 24px;
-      min-height: 100%;
+      display: grid;
+      grid-template-rows: auto auto 1fr;
     }
 
     .service-num {
@@ -604,10 +608,11 @@
       background: var(--green);
     }
 
+    /* Match intro-grid layout exactly */
     .pricing-grid {
       display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 80px;
+      grid-template-columns: 0.95fr 1.1fr;
+      gap: 84px;
       align-items: start;
       position: relative;
       z-index: 1;
@@ -615,30 +620,35 @@
 
     .pricing h2 {
       font-family: var(--serif);
-      font-size: clamp(30px, 4vw, 50px);
+      font-size: clamp(30px, 4vw, 52px);
       line-height: 1.15;
       font-weight: 400;
       color: var(--paper);
-      margin: 0 0 22px;
     }
 
-    .pricing-copy p {
+    .pricing h2 em {
+      color: var(--green);
+      font-style: italic;
+    }
+
+    .pricing-right p {
       font-size: 19px;
-      line-height: 1.9;
-      color: rgba(237,228,216,0.78);
-      margin: 0 0 18px;
+      line-height: 1.95;
+      color: rgba(237,228,216,0.82);
+      margin: 0 0 20px;
     }
 
-    .pricing-copy p:last-child { margin-bottom: 0; }
+    .pricing-right p:last-child { margin-bottom: 0; }
 
-    .pricing-copy strong {
-      color: #f2ebe0;
+    .pricing-right strong {
+      color: #f3ece1;
       font-weight: 500;
     }
 
     .pricing-points {
       list-style: none;
       border-top: 1px solid rgba(237,228,216,0.12);
+      margin-top: 32px;
     }
 
     .pricing-points li {
@@ -966,7 +976,7 @@
       .hero-sub,
       .intro-copy p,
       .why-copy p,
-      .pricing-copy p,
+      .pricing-right p,
       .contact p {
         font-size: 18px;
       }
@@ -1009,7 +1019,7 @@
         <p class="hero-eyebrow">Web Design &amp; Development</p>
         <h1>A website that looks good is <em>only the start.</em></h1>
         <p class="hero-sub">
-          I design and build websites that work properly for <strong>your business and your customers</strong> —
+          I design and build websites that work properly for <strong>your business and your customers</strong> -
           including the custom parts that standard setups often cannot handle.
         </p>
         <p class="hero-sub">
@@ -1037,10 +1047,10 @@
           <h2>Not just web design.<br><em>Real build capability too.</em></h2>
           <div class="intro-copy">
             <p>
-              I don’t just design pages. I know how to code, solve problems, and build the parts underneath a website that make it actually useful.
+              I don't just design pages. I know how to code, solve problems, and build the parts underneath a website that make it actually useful.
             </p>
             <p>
-              That means if your project needs more than a standard brochure site — whether that’s a better user journey, bookings, protected content, custom sections, integrations, or functionality tailored to your customers — <strong>I can help shape and build that properly</strong>.
+              That means if your project needs more than a standard brochure site - whether that's a better user journey, bookings, protected content, custom sections, integrations, or functionality tailored to your customers - <strong>I can help shape and build that properly</strong>.
             </p>
             <p>
               The result is a website that is not boxed in by what a template happens to allow. It can be built around what you need it to do.
@@ -1207,7 +1217,7 @@
                 A lot of people can make a website look decent. Far fewer can also build the custom parts that make it properly useful.
               </p>
               <p>
-                Because I work hands-on and know how to code, I can help with both sides of the project — <strong>how it looks to your customers, and how it functions underneath</strong>.
+                Because I work hands-on and know how to code, I can help with both sides of the project - <strong>how it looks to your customers, and how it functions underneath</strong>.
               </p>
               <p>
                 That means fewer compromises, fewer handoffs, and more freedom to build what actually makes sense for your business instead of being limited by a standard setup.
@@ -1218,7 +1228,7 @@
           <ul class="why-list">
             <li><div><strong>Direct communication</strong>You deal with me from start to finish, not an account manager or a handoff halfway through.</div></li>
             <li><div><strong>Design + build in one place</strong>The visual side and the practical side are connected, which usually leads to a much better result.</div></li>
-            <li><div><strong>Custom where it matters</strong>If your site needs something beyond the standard template, that is part of the job — not a problem.</div></li>
+            <li><div><strong>Custom where it matters</strong>If your site needs something beyond the standard template, that is part of the job - not a problem.</div></li>
             <li><div><strong>Built around real needs</strong>I am comfortable tailoring things to suit your business and the way your customers actually use the site.</div></li>
             <li><div><strong>No agency drag</strong>You are paying for useful work and sensible problem-solving, not layers of overhead.</div></li>
           </ul>
@@ -1244,7 +1254,7 @@
           <div class="service-card">
             <span class="service-num">03</span>
             <h3>Bookings &amp; User Journeys</h3>
-            <p>Websites designed around the actions people need to take — whether that is enquiring, booking, joining or buying.</p>
+            <p>Websites designed around the actions people need to take - whether that is enquiring, booking, joining or buying.</p>
           </div>
           <div class="service-card">
             <span class="service-num">04</span>
@@ -1258,29 +1268,26 @@
     <!-- PRICING -->
     <section class="section pricing">
       <div class="wrap">
+        <div class="section-label">Approach</div>
         <div class="pricing-grid">
-          <div>
-            <div class="section-label">Approach</div>
-            <h2>Fair pricing. Sensible scope. Willing to go further when it matters.</h2>
-            <div class="pricing-copy">
-              <p>
-                I price projects based on the work involved and the value of what is being built — clearly and reasonably.
-              </p>
-              <p>
-                I also genuinely enjoy stretching a project further when there is a better way to do something, or when a more tailored solution would improve the end result.
-              </p>
-              <p>
-                So while the pricing should stay fair, the attitude is not minimal. <strong>I’m happy to go above and beyond to get something right</strong> — especially when that helps create a stronger website for you and helps me keep developing my own capability at the same time.
-              </p>
-            </div>
+          <h2>Fair pricing. Sensible scope. <em>Willing to go further</em> when it matters.</h2>
+          <div class="pricing-right">
+            <p>
+              I price projects based on the work involved and the value of what is being built - clearly and reasonably.
+            </p>
+            <p>
+              I also genuinely enjoy stretching a project further when there is a better way to do something, or when a more tailored solution would improve the end result.
+            </p>
+            <p>
+              So while the pricing should stay fair, the attitude is not minimal. <strong>I'm happy to go above and beyond to get something right</strong> - especially when that helps create a stronger website for you and helps me keep developing my own capability at the same time.
+            </p>
+            <ul class="pricing-points">
+              <li><div><strong>Clear, fixed pricing where possible</strong>No padded retainers or unnecessary complexity for the sake of it.</div></li>
+              <li><div><strong>Paying for real work</strong>The focus is on what is useful and what improves the result, not on inflating hours.</div></li>
+              <li><div><strong>Flexible where it helps</strong>If there is a smarter or more tailored way to do something, I'm open to pushing the work further.</div></li>
+              <li><div><strong>Built with care</strong>I want the finished site to genuinely work well for the business and the people using it.</div></li>
+            </ul>
           </div>
-
-          <ul class="pricing-points">
-            <li><div><strong>Clear, fixed pricing where possible</strong>No padded retainers or unnecessary complexity for the sake of it.</div></li>
-            <li><div><strong>Paying for real work</strong>The focus is on what is useful and what improves the result, not on inflating hours.</div></li>
-            <li><div><strong>Flexible where it helps</strong>If there is a smarter or more tailored way to do something, I’m open to pushing the work further.</div></li>
-            <li><div><strong>Built with care</strong>I want the finished site to genuinely work well for the business and the people using it.</div></li>
-          </ul>
         </div>
       </div>
     </section>
@@ -1324,8 +1331,8 @@
         <div class="section-label" style="justify-content:center;">Contact</div>
         <h2>Tell me what you need <em>built.</em></h2>
         <p>
-          Whether it’s a straightforward website or something with more moving parts,
-          I’m happy to talk it through and see what makes sense.
+          Whether it's a straightforward website or something with more moving parts,
+          I'm happy to talk it through and see what makes sense.
         </p>
 
         <div class="contact-actions">
