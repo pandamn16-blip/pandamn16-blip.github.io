@@ -647,34 +647,29 @@
 
     .pricing-points {
       list-style: none;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
       border-top: 1px solid rgba(237,228,216,0.12);
-      margin-top: 32px;
+      margin-top: 64px;
+      position: relative;
+      z-index: 1;
     }
 
     .pricing-points li {
-      display: flex;
-      gap: 16px;
-      padding: 18px 0;
-      border-bottom: 1px solid rgba(237,228,216,0.12);
+      padding: 28px 28px 0 0;
+      border-top: 2px solid rgba(184,85,40,0.45);
       color: rgba(237,228,216,0.72);
-      font-size: 17px;
-      line-height: 1.7;
-    }
-
-    .pricing-points li::before {
-      content: "";
-      width: 20px;
-      height: 1px;
-      background: var(--accent);
-      margin-top: 12px;
-      flex-shrink: 0;
+      font-size: 16px;
+      line-height: 1.75;
     }
 
     .pricing-points strong {
       display: block;
       color: var(--paper);
       font-weight: 500;
-      margin-bottom: 2px;
+      margin-bottom: 6px;
+      font-size: 17px;
     }
 
     /* PROCESS */
@@ -952,6 +947,10 @@
         gap: 34px;
       }
 
+      .pricing-points {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
       .project-meta {
         grid-template-columns: 1fr;
       }
@@ -982,7 +981,8 @@
       }
 
       .services-grid,
-      .process-steps {
+      .process-steps,
+      .pricing-points {
         grid-template-columns: 1fr;
       }
 
@@ -1281,14 +1281,14 @@
             <p>
               So while the pricing should stay fair, the attitude is not minimal. <strong>I'm happy to go above and beyond to get something right</strong> - especially when that helps create a stronger website for you and helps me keep developing my own capability at the same time.
             </p>
-            <ul class="pricing-points">
-              <li><div><strong>Clear, fixed pricing where possible</strong>No padded retainers or unnecessary complexity for the sake of it.</div></li>
-              <li><div><strong>Paying for real work</strong>The focus is on what is useful and what improves the result, not on inflating hours.</div></li>
-              <li><div><strong>Flexible where it helps</strong>If there is a smarter or more tailored way to do something, I'm open to pushing the work further.</div></li>
-              <li><div><strong>Built with care</strong>I want the finished site to genuinely work well for the business and the people using it.</div></li>
-            </ul>
           </div>
         </div>
+        <ul class="pricing-points">
+          <li><strong>Clear, fixed pricing where possible</strong>No padded retainers or unnecessary complexity for the sake of it.</li>
+          <li><strong>Paying for real work</strong>The focus is on what is useful and what improves the result, not on inflating hours.</li>
+          <li><strong>Flexible where it helps</strong>If there is a smarter or more tailored way to do something, I'm open to pushing the work further.</li>
+          <li><strong>Built with care</strong>I want the finished site to genuinely work well for the business and the people using it.</li>
+        </ul>
       </div>
     </section>
 
